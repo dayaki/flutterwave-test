@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 import { BackArrow } from '../../assets/icons';
 import { Black, Brand } from './Colors';
-import { useNavigation } from '@react-navigation/native';
 
 interface ButtonProps {
   text: string;
@@ -15,16 +14,16 @@ interface ButtonProps {
   textStyle?: object;
   transparent?: boolean;
   isLoading?: boolean;
+  testID?: string;
   onPress: () => void;
 }
 
-export const BackButton = () => {
-  const navigation = useNavigation();
+export const BackButton = ({ onPress }: { onPress: () => void }) => {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
       style={styles.backBtn}
-      onPress={() => navigation.goBack()}>
+      onPress={onPress}>
       <BackArrow />
     </TouchableOpacity>
   );
@@ -36,6 +35,7 @@ export const Button = ({
   textStyle,
   transparent,
   isLoading,
+  testID,
   onPress,
 }: ButtonProps) => (
   <TouchableOpacity
@@ -45,7 +45,8 @@ export const Button = ({
       styles.button,
       transparent && styles.transparentButton,
       buttonStyle,
-    ]}>
+    ]}
+    testID={testID || null}>
     {isLoading ? (
       <ActivityIndicator size="small" color={Black} />
     ) : (

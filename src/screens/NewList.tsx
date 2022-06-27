@@ -63,7 +63,7 @@ const NewList = ({ navigation, route }: NavigationProps) => {
     <KeyboardAwareScrollView
       style={[styles.container, styles.paddedContainer]}
       contentContainerStyle={styles.wrapper}>
-      <BackButton />
+      <BackButton onPress={() => navigation.goBack()} />
       <PageTitleText text="Add New Product" />
       <View style={styles.form}>
         <Controller
@@ -153,6 +153,7 @@ const NewList = ({ navigation, route }: NavigationProps) => {
               text="Delete Product"
               buttonStyle={styles.btn}
               onPress={onDelete}
+              testID="delete-btn"
             />
           </View>
         ) : (

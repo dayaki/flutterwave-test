@@ -25,6 +25,7 @@
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/react-native": "^10.1.1",
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.68.0",
     "@types/react-test-renderer": "^18.0.0",
@@ -42,6 +43,12 @@
   },
   "jest": {
     "preset": "react-native",
+    "setupFiles": [
+      "./jestSetupFile.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native-keyboard-aware-scroll-view|(jest-)?@?react-native|@react-native-community|@react-navigation)"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
